@@ -1,0 +1,232 @@
+{
+    "rules": {
+        "urgent_language": {
+            "patterns": [
+                "立即",
+                "馬上",
+                "盡快",
+                "緊急",
+                "立即處理",
+                "限時",
+                "24小時內",
+                "帳戶將被停用",
+                "最後通知",
+                "urgent",
+                "immediately",
+                "act now",
+                "final notice",
+                "limited time",
+                "expire(?:d|s)? soon",
+                "suspended"
+            ],
+            "score": 15,
+            "reason": "訊息含有緊急或催促語氣，常見於詐騙或社交工程內容。"
+        },
+        "credential_request": {
+            "patterns": [
+                "密碼",
+                "驗證碼",
+                "OTP",
+                "一次性密碼",
+                "登入驗證",
+                "帳號密碼",
+                "password",
+                "passcode",
+                "verification code",
+                "one-time password",
+                "login credentials",
+                "sign in to verify"
+            ],
+            "score": 30,
+            "reason": "訊息要求提供登入資訊或驗證碼，屬於高風險特徵。"
+        },
+        "financial_request": {
+            "patterns": [
+                "付款",
+                "匯款",
+                "轉帳",
+                "信用卡",
+                "銀行帳號",
+                "退款",
+                "payment",
+                "bank account",
+                "credit card",
+                "wire transfer",
+                "refund",
+                "invoice"
+            ],
+            "score": 20,
+            "reason": "訊息涉及金流、信用卡或銀行資料要求，具有詐騙風險。"
+        },
+        "link_pressure": {
+            "patterns": [
+                "點擊連結",
+                "點此",
+                "立即登入",
+                "立即驗證",
+                "請點擊",
+                "click here",
+                "click the link",
+                "verify now",
+                "log in now",
+                "open the link"
+            ],
+            "score": 20,
+            "reason": "訊息引導使用者立刻點擊連結，屬常見誘導手法。"
+        },
+        "prize_or_reward": {
+            "patterns": [
+                "中獎",
+                "獎勵",
+                "禮物",
+                "免費",
+                "贈品",
+                "bonus",
+                "reward",
+                "gift",
+                "claim now",
+                "winner",
+                "free",
+                "prize"
+            ],
+            "score": 15,
+            "reason": "訊息以獎勵、免費或中獎等誘因吸引點擊，屬常見詐騙特徵。"
+        },
+        "official_impersonation": {
+            "patterns": [
+                "官方通知",
+                "客服中心",
+                "銀行通知",
+                "系統通知",
+                "帳戶異常",
+                "security team",
+                "support team",
+                "official notice",
+                "account issue",
+                "account suspended",
+                "service alert"
+            ],
+            "score": 15,
+            "reason": "訊息可能冒充官方、客服或安全部門，具有社交工程風險。"
+        },
+        "delivery_scam": {
+            "patterns": [
+                "包裹",
+                "配送失敗",
+                "快遞",
+                "物流",
+                "補運費",
+                "parcel",
+                "delivery failed",
+                "courier",
+                "shipment",
+                "reschedule delivery"
+            ],
+            "score": 15,
+            "reason": "訊息疑似利用包裹、物流或配送問題誘導點擊或付款。"
+        },
+        "job_scam": {
+            "patterns": [
+                "高薪",
+                "日結",
+                "在家工作",
+                "兼職",
+                "輕鬆賺",
+                "high salary",
+                "daily pay",
+                "work from home",
+                "part-time",
+                "easy money"
+            ],
+            "score": 15,
+            "reason": "訊息可能利用求職、兼職或快速賺錢作為誘餌。"
+        }
+    },
+    "combined_rules": {
+        "link_and_urgency": {
+            "requires": [
+                "urgent_language"
+            ],
+            "needs_url": true,
+            "bonus_score": 10,
+            "flag": "combined_link_and_urgency",
+            "reason": "訊息同時包含連結與緊急語氣，風險明顯提高。"
+        },
+        "link_and_credential_request": {
+            "requires": [
+                "credential_request"
+            ],
+            "needs_url": true,
+            "bonus_score": 15,
+            "flag": "combined_link_and_credential_request",
+            "reason": "訊息同時要求點擊連結與提供驗證資訊，屬高風險組合。"
+        },
+        "credential_and_financial_request": {
+            "requires": [
+                "credential_request",
+                "financial_request"
+            ],
+            "needs_url": false,
+            "bonus_score": 15,
+            "flag": "combined_credential_and_financial_request",
+            "reason": "訊息同時涉及帳密與金流資訊，屬高風險詐騙特徵。"
+        }
+    },
+    "url_rules": {
+        "non_https": {
+            "score": 10,
+            "reason": "網址未使用 HTTPS，加密保護不足。"
+        },
+        "ip_host": {
+            "score": 20,
+            "reason": "網址直接使用 IP 位址，而不是正常網域，常見於可疑連結。"
+        },
+        "shortener": {
+            "score": 15,
+            "reason": "此網址使用短網址服務，可能隱藏實際目的地。"
+        },
+        "long_url": {
+            "score": 10,
+            "reason": "網址長度異常偏長，可能用來隱藏可疑內容。"
+        },
+        "many_subdomains": {
+            "score": 10,
+            "reason": "網址含有過多子網域，可能用來偽裝官方網站。"
+        },
+        "punycode": {
+            "score": 20,
+            "reason": "網址含有 punycode，可能涉及相似字元偽裝。"
+        },
+        "suspicious_keywords": {
+            "score_per_hit": 5,
+            "max_score": 20,
+            "reason_template": "網址包含高風險關鍵字：{keywords}。"
+        },
+        "brand_impersonation": {
+            "score": 25,
+            "reason": "網址中出現品牌字樣，但主網域實際上不是官方常見網域，疑似偽裝。"
+        },
+        "lookalike_domain": {
+            "score": 30,
+            "reason": "主網域與知名品牌高度相似，可能是 lookalike domain。"
+        }
+    },
+    "risk_levels": {
+        "low": {
+            "min": 0,
+            "max": 29
+        },
+        "medium": {
+            "min": 30,
+            "max": 59
+        },
+        "high": {
+            "min": 60,
+            "max": 79
+        },
+        "critical": {
+            "min": 80,
+            "max": 100
+        }
+    }
+}

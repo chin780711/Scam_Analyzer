@@ -1,0 +1,128 @@
+{
+    "brands": [{
+            "name": "paypal",
+            "official_domains": [
+                "paypal.com"
+            ]
+        },
+        {
+            "name": "apple",
+            "official_domains": [
+                "apple.com",
+                "icloud.com"
+            ]
+        },
+        {
+            "name": "microsoft",
+            "official_domains": [
+                "microsoft.com",
+                "live.com",
+                "outlook.com"
+            ]
+        },
+        {
+            "name": "google",
+            "official_domains": [
+                "google.com",
+                "gmail.com"
+            ]
+        },
+        {
+            "name": "amazon",
+            "official_domains": [
+                "amazon.com"
+            ]
+        },
+        {
+            "name": "netflix",
+            "official_domains": [
+                "netflix.com"
+            ]
+        },
+        {
+            "name": "facebook",
+            "official_domains": [
+                "facebook.com"
+            ]
+        },
+        {
+            "name": "instagram",
+            "official_domains": [
+                "instagram.com"
+            ]
+        },
+        {
+            "name": "whatsapp",
+            "official_domains": [
+                "whatsapp.com"
+            ]
+        },
+        {
+            "name": "visa",
+            "official_domains": [
+                "visa.com"
+            ]
+        },
+        {
+            "name": "mastercard",
+            "official_domains": [
+                "mastercard.com"
+            ]
+        },
+        {
+            "name": "dhl",
+            "official_domains": [
+                "dhl.com"
+            ]
+        },
+        {
+            "name": "fedex",
+            "official_domains": [
+                "fedex.com"
+            ]
+        },
+        {
+            "name": "ups",
+            "official_domains": [
+                "ups.com"
+            ]
+        },
+        {
+            "name": "post",
+            "official_domains": [
+                "usps.com",
+                "canadapost-postescanada.ca",
+                "post.gov.tw"
+            ]
+        },
+        {
+            "name": "bank",
+            "official_domains": []
+        }
+    ],
+    "shorteners": [
+        "bit.ly",
+        "tinyurl.com",
+        "t.co",
+        "goo.gl",
+        "rebrand.ly",
+        "is.gd",
+        "ow.ly",
+        "buff.ly",
+        "cutt.ly",
+        "shorturl.at",
+        "tiny.cc",
+        "rb.gy"
+    ],
+    "lookalike_characters": {
+        "0": "o",
+        "1": "l",
+        "3": "e",
+        "5": "s",
+        "7": "t",
+        "8": "b",
+        "9": "g",
+        "i": "l",
+        "l": "i"
+    }
+}
