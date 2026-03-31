@@ -242,7 +242,11 @@ if analyze_btn:
     if not user_input.strip():
         st.warning("請先輸入要分析的內容。")
     else:
-        st.session_state["analysis_result"] = analyze_input(user_input)
+        try:
+            st.session_state["analysis_result"] = analyze_input(user_input)
+        except Exception as e:
+            st.error(f"分析時發生錯誤：{e}")
+            st.exception(e)
 
 result = st.session_state.get("analysis_result")
 
