@@ -71,7 +71,6 @@ Scam Analyzer 是一個以 **文字規則分析 + 網址風險判斷 + 可讀化
 Scam_Analyzer/
 │
 ├─ app.py
-├─ README.md
 │
 ├─ core/
 │  ├─ preprocessor.py
